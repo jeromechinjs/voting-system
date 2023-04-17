@@ -60,11 +60,6 @@ public class SortedArrayListP8Q2<T extends Comparable<T>> implements SortedListI
     return true;
   }
 
-
-  public boolean remove(T anEntry) {
-    throw new UnsupportedOperationException();
-  }
-
   public void clear() {
     numberOfEntries = 0;
   }
