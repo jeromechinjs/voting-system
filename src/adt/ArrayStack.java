@@ -1,5 +1,6 @@
 package adt;
 
+import java.util.Comparator;
 /**
  *
  * @author Bryan Wong
@@ -11,6 +12,10 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
                 numberOfEntries; 
     private static final int DEFAULT_CAPACITY = 50;
     
+    public int getNumberOfEntries() {
+        return numberOfEntries;
+    }
+
     public ArrayStack() {
         this(DEFAULT_CAPACITY);
     }
@@ -32,7 +37,6 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
     @Override
     public T pop() {
         T top = null;
-        System.out.println(top);
         if (!isEmpty()) {
             top = arrayStack[topIndex];
             arrayStack[topIndex] = null;
@@ -71,17 +75,35 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
     }
 
     @Override
-    public void sortAscending() {
-        for (int i = 0; i < arrayStack.length; i++) {
-            if ((int) arrayStack[i] < (int) arrayStack[i+1]) {
-                
+    public ArrayStack<Integer> sortAscending(ArrayStack<Integer> aStack) {
+        ArrayStack<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
+
+        while (!aStack.isEmpty()) {
+            int temp = aStack.pop();
+
+            while (!tempStack.isEmpty() && tempStack.peek() > temp) {
+                aStack.push(tempStack.pop());
             }
+            tempStack.push(temp);
         }
+        return tempStack;
     }
 
     @Override
-    public void sortDescending() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayStack<Integer> sortDescending(ArrayStack<Integer> aStack) {
+        ArrayStack<Integer> tempStack = new ArrayStack<Integer>();      //temporary stack for sorting
+
+        while (!aStack.isEmpty()) {
+            int temp = aStack.peek();
+            aStack.pop();
+
+            while (!tempStack.isEmpty() && tempStack.peek() < temp) {
+                aStack.push(tempStack.peek());
+                tempStack.pop();
+            }
+            tempStack.push(temp);
+        }
+        return tempStack;
     }
 
     @Override

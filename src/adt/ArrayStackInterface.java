@@ -10,7 +10,7 @@ public interface ArrayStackInterface<T> {
     public boolean isEmpty();
     public boolean isFull();
     public void expand();
-    public void sortAscending();
-    public void sortDescending();
+    public ArrayStack<Integer> sortAscending(ArrayStack<Integer> aStack);
+    public ArrayStack<Integer> sortDescending(ArrayStack<Integer> aStack);
     public void clear();
 }
