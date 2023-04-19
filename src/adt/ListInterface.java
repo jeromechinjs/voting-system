@@ -4,6 +4,9 @@ package adt;
  * @author Yew Chun
  */
 
+import java.util.Iterator;
+
+
 public interface ListInterface<T> {
 
   
@@ -35,4 +38,6 @@ public interface ListInterface<T> {
 
   
   public boolean isFull();
+  
+  public Iterator<T> getIterator();
 }

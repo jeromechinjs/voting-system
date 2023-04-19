@@ -3,9 +3,12 @@ package adt;
  *
  * @author Yew Chun
  */
-import java.io.Serializable;
+//import java.io.Serializable;
 
-public class ArrayList<T> implements ListInterface<T>, Serializable {
+import java.util.Iterator;
+
+
+public class ArrayList<T> implements ListInterface<T> {
 
   private T[] array;
   private int numberOfEntries;
@@ -135,7 +138,6 @@ public class ArrayList<T> implements ListInterface<T>, Serializable {
     String outputStr = "";
     for (int index = 0; index < numberOfEntries; ++index) {
       outputStr += array[index] + "\n";
-      System.out.print(outputStr + "\n");
     }
 
     return outputStr;
@@ -172,4 +174,31 @@ public class ArrayList<T> implements ListInterface<T>, Serializable {
       array[index] = array[index + 1];
     }
   }
+  // iterator part
+    @Override
+    public Iterator<T> getIterator() {
+        return new ListIterator();
+    }
+
+
+    private class ListIterator implements Iterator<T> {
+        
+        private int currentIndex;       // by default is 0
+        
+        public ListIterator() {
+            currentIndex = 0;
+        }
+        
+        @Override
+        public boolean hasNext() {
+            return currentIndex < numberOfEntries;
+        }
+
+        @Override
+        public T next() {
+            T currentArray = array[currentIndex];
+            currentIndex++;
+            return currentArray;
+        }
+    }
 }
