@@ -135,6 +135,7 @@ public class ArrayList<T> implements ListInterface<T>, Serializable {
     String outputStr = "";
     for (int index = 0; index < numberOfEntries; ++index) {
       outputStr += array[index] + "\n";
+      System.out.print(outputStr + "\n");
     }
 
     return outputStr;
