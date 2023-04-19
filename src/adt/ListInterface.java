@@ -1,5 +1,8 @@
 package adt;
-
+/**
+ *
+ * @author Yew Chun
+ */
 
 public interface ListInterface<T> {
 

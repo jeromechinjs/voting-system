@@ -1,5 +1,8 @@
 package adt;
-
+/**
+ *
+ * @author Yew Chun
+ */
 import java.io.Serializable;
 
 public class ArrayList<T> implements ListInterface<T>, Serializable {
