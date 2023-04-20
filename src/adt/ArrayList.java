@@ -1,7 +1,7 @@
 package adt;
 /**
  *
- * @author Yew Chun
+ * @author yewchun
  */
 //import java.io.Serializable;
 
@@ -12,7 +12,7 @@ public class ArrayList<T> implements ListInterface<T> {
 
   private T[] array;
   private int numberOfEntries;
-  private static final int DEFAULT_CAPACITY = 5;
+  private static final int DEFAULT_CAPACITY = 10;
 
   public ArrayList() {
     this(DEFAULT_CAPACITY);
@@ -183,7 +183,7 @@ public class ArrayList<T> implements ListInterface<T> {
 
     private class ListIterator implements Iterator<T> {
         
-        private int currentIndex;       // by default is 0
+        private int currentIndex;       // by default is 1
         
         public ListIterator() {
             currentIndex = 0;
