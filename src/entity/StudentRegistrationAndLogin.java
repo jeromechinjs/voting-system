@@ -1,7 +1,6 @@
 package entity;
 import adt.ArrayList;
 import adt.ListInterface;
-import entity.Voter;
 import java.util.Iterator;
 import java.util.Scanner;
 /**
