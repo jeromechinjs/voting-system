@@ -93,15 +93,9 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
     public ArrayStack<Integer> sortDescending(ArrayStack<Integer> aStack) {
         ArrayStack<Integer> tempStack = new ArrayStack<Integer>();      //temporary stack for sorting
 
+        aStack = aStack.sortAscending(aStack);
         while (!aStack.isEmpty()) {
-            int temp = aStack.peek();
-            aStack.pop();
-
-            while (!tempStack.isEmpty() && tempStack.peek() < temp) {
-                aStack.push(tempStack.peek());
-                tempStack.pop();
-            }
-            tempStack.push(temp);
+            tempStack.push(aStack.pop());
         }
         return tempStack;
     }
