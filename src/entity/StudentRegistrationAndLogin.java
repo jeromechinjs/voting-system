@@ -71,20 +71,17 @@ public class StudentRegistrationAndLogin {
                 System.out.print("Login Successfully\n");
                 loggedIn = true;
                 System.out.print("ID: " + voter.getId() + "\nName: " + voter.getName() + "\nFaculty: " + voter.getFaculty()+ "\n");
+                conti = false;
                 break;
 
             }
             
         }
         if (!loggedIn) {
-                System.out.print("Student ID or Password is invalid");
-                
+                System.out.print("Student ID or Password is invalid\n");
+                conti = true;
             }
-            
-             System.out.print("Continue?: ");
-            String yes = sc.nextLine();
-            conti = "y".equals(yes); 
-            
+
         }while(conti);
         // login 
     }
