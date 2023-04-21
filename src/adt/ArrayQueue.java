@@ -3,14 +3,12 @@ package adt;
 import java.util.Iterator;
 
 /**
- *   ArrayQueue.java A class that implements the * ADT array by using an
- *   expandable linear array with a fixed front.
+  ArrayQueue.java A class that implements the * ADT array by using an
+  expandable linear array with a fixed front.
+  
+  @author Jia Shen
  */
 
- /**
- *
- * @author Jia Shen
- */
 public class ArrayQueue<T> implements QueueInterface<T> {
 
   private T[] array;

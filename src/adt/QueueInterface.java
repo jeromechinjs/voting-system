@@ -3,16 +3,12 @@ package adt;
 import java.util.Iterator;
 
 /**
- * * QueueInterface.java An interface for the ADT queue with an additional
- *    method that returns an iterator to the queue.
- *
- * @version 3.0
+   QueueInterface.java An interface for the ADT queue with an additional method that returns an iterator to the queue.
+
+   @author Jia Shen
  */
 
- /**
- *
- * @author Jia Shen
- */
+
 public interface QueueInterface<T> {
 
   public Iterator<T> getIterator();
