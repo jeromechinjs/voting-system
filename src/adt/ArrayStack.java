@@ -5,7 +5,7 @@ import java.util.Comparator;
  *
  * @author Bryan Wong
  */
-public class ArrayStack<T> implements ArrayStackInterface<T> {
+public class ArrayStack<T> implements StackInterface<T> {
 
     private T[] arrayStack;
     private int topIndex, // index of top entry
@@ -75,8 +75,8 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
     }
 
     @Override
-    public ArrayStack<Integer> sortAscending(ArrayStack<Integer> aStack) {
-        ArrayStack<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
+    public StackInterface<Integer> sortAscending(StackInterface<Integer> aStack) {
+        StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
 
         while (!aStack.isEmpty()) {         //Sort until aStack is empty
             int temp = aStack.pop();        
@@ -90,8 +90,8 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
     }
 
     @Override
-    public ArrayStack<Integer> sortDescending(ArrayStack<Integer> aStack) {
-        ArrayStack<Integer> tempStack = new ArrayStack<Integer>();      //temporary stack for sorting
+    public StackInterface<Integer> sortDescending(StackInterface<Integer> aStack) {
+        StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
 
         aStack = aStack.sortAscending(aStack);      //Sorts stack in ascending order
         while (!aStack.isEmpty()) {

@@ -1,6 +1,6 @@
 package adt;
 
-public interface AdminList {
+public interface LinkedListInterface {
     void addAdmin(String newAdmin, String password);
 
     void removeAdmin(String adminToRemove);

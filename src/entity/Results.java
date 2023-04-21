@@ -7,8 +7,6 @@ import entity.*;
  * @author Bryan Wong
  */
 public class Results {
-    private ArrayStack<Integer> teachers;
-    private ArrayStack<Integer> voteCount;
     
     public Results(){}
 

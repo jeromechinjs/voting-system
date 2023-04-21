@@ -1,11 +1,10 @@
 package adt;
 
 public interface CandidateList {
-    CandidateList next = null;
 
-    void addCandidate(CandidateList newCandidate);
+    void addCandidate(String newCandidate);
 
-    void removeCandidate(CandidateList candidateToRemove);
+    void removeCandidate(String candidateToRemove);
 
     public void displayCandidateList();
 }
