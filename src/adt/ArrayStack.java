@@ -78,32 +78,26 @@ public class ArrayStack<T> implements ArrayStackInterface<T> {
     public ArrayStack<Integer> sortAscending(ArrayStack<Integer> aStack) {
         ArrayStack<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
 
-        while (!aStack.isEmpty()) {
-            int temp = aStack.pop();
+        while (!aStack.isEmpty()) {         //Sort until aStack is empty
+            int temp = aStack.pop();        
 
-            while (!tempStack.isEmpty() && tempStack.peek() > temp) {
-                aStack.push(tempStack.pop());
+            while (!tempStack.isEmpty() && tempStack.peek() > temp) {   //if tempStack is not empty AND tempStack's top element is larger than aStack's top element,
+                aStack.push(tempStack.pop());                           //push tempStack's top element into aStack
             }
             tempStack.push(temp);
         }
-        return tempStack;
+        return tempStack;       //Sorted Stack
     }
 
     @Override
     public ArrayStack<Integer> sortDescending(ArrayStack<Integer> aStack) {
         ArrayStack<Integer> tempStack = new ArrayStack<Integer>();      //temporary stack for sorting
 
+        aStack = aStack.sortAscending(aStack);      //Sorts stack in ascending order
         while (!aStack.isEmpty()) {
-            int temp = aStack.peek();
-            aStack.pop();
-
-            while (!tempStack.isEmpty() && tempStack.peek() < temp) {
-                aStack.push(tempStack.peek());
-                tempStack.pop();
-            }
-            tempStack.push(temp);
+            tempStack.push(aStack.pop());           //Reverse order
         }
-        return tempStack;
+        return tempStack;       //Sorted Stack
     }
 
     @Override
