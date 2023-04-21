@@ -3,6 +3,7 @@ package client;
 import adt.*;
 import entity.*;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String args[]) {
