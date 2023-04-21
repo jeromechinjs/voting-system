@@ -4,25 +4,16 @@ package adt;
     @author Chong Yen Khang
  */
 
-public class LinkedListAdminList implements AdminList {
+public class LinkedListAdminList implements LinkedListInterface {
 
     // Admin class to hold admin account details
-    private static class Admin {
-        String username;
-        String password;
+    public static class Admin {
+        private String username;
+        private String password;
 
-        // Constructor
         public Admin(String username, String password) {
             this.username = username;
             this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public String getPassword() {
-            return password;
         }
     }
 
@@ -95,8 +86,31 @@ public class LinkedListAdminList implements AdminList {
         }
         Node current = head;
         while (current != null) {
-            System.out.println(current.data.toString());
+            int i = 1;
+            System.out.println("***************");
+            System.out.println("*List of Admin*");
+            System.out.println("***************");
+            System.out.println(i + ".\t" + current.data.toString());
             current = current.next;
+            i++;
+        }
+    }
+
+    public boolean login(String username, String password) {
+        if (head == null) {
+            System.out.println("Admin list is empty");
+            return false;
+        } else {
+            Node current = head;
+            while (current != null) {
+                if (current.data.equals(username) && current.data.equals(password)) {
+                    System.out.println("Login successful");
+                    return true;
+                }
+                current = current.next;
+            }
+            System.out.println("Invalid username or password");
+            return false;
         }
     }
 }
