@@ -1,4 +1,5 @@
 package client;
+import adt.*;
 import java.util.Iterator;
 import java.util.Scanner;
 import entity.Voter;
@@ -11,8 +12,8 @@ public class TestStudentRegistrationAndLogin {
    
     public static void main(String args[]) {
         
-       Voter voter = new Voter();
-// ListInterface<Voter> voterList = new ArrayList<>();
+        Voter voter = new Voter();
+        ListInterface<Voter> voterList = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in); 
         
@@ -20,7 +21,7 @@ public class TestStudentRegistrationAndLogin {
             
         
         do {
-             System.out.print("Enter student id: ");
+            System.out.print("Enter student id: ");
             String registerId = sc.nextLine();
         
         

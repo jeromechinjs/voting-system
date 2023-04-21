@@ -3,6 +3,7 @@ package client;
 import adt.*;
 import entity.*;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String args[]) {
@@ -37,7 +38,6 @@ public class Main {
                 break;
             }
         }
-        int temp = 0;
         switch (selection) {
             case "1":
                 linkedAdminList.displayAdminList();
@@ -54,42 +54,48 @@ public class Main {
                     System.out.println("\n*********************************************************");
                     System.out.println("*\t[1]\tAdd Candidate\t\t\t*");
                     System.out.println("*\t[2]\tRemove Candidate\t\t\t*");
-                    System.out.println("*\t[3]\tAdd Admin\t\t\t*");
-                    System.out.println("*\t[4]\tExit\t\t\t*");
+                    System.out.println("*\t[3]\tDisplay Candidate\t\t\t*");
+                    System.out.println("*\t[4]\tAdd Admin\t\t\t*");
+                    System.out.println("*\t[5]\tExit\t\t\t*");
                     System.out.println("\n*********************************************************\n\n");
-                    int result;
-                    while (true) {
-                        try {
-                            System.out.print("Selection (1/2/3/4): ");
-                            selection = sc.next();
-                            result = Integer.parseInt(selection);
-                        } catch (Exception e) {
-                            System.out.println("Invalid input, please try again.");
-                            continue;
-                        }
-                        if (result < 1 | result > 4) {
-                            System.out.print("\nInvalid input! Please select the numbers available. ");
-                        } else {
+                    int sel;
+                    System.out.print("Choose 1 - 5: ");
+                    sel = sc.nextInt();
+                    switch (sel) {
+                        case 1:
+                            String cName;
+                            System.out.print("\nEnter Candidate Name: ");
+                            cName = sc.next();
+                            linkedCandidateList.addCandidate(cName);
                             break;
-                        }
-                        temp = result;
+                        case 2:
+                            String cand;
+                            System.out.print("\nEnter Candidate Name: ");
+                            cand = sc.next();
+                            linkedCandidateList.removeCandidate(cand);
+                            break;
+                        case 3:
+                            linkedCandidateList.displayCandidateList();
+                            break;
+                        case 4:
+                            String aName, aPwd;
+                            System.out.print("\nEnter admin userame: ");
+                            aName = sc.next();
+                            System.out.print("\nEnter password for account: ");
+                            aPwd = sc.next();
+                            linkedAdminList.addAdmin(aName, aPwd);
+                            break;
+                        case 5:
+                            break;
                     }
                 }
                 break;
             case "2":
-                System.out.println("Add Candidate: ");
+                System.out.println("To be added");
                 break;
             case "3":
                 System.out.println("Have a good day!");
                 break;
-        }
-
-        switch (temp) {
-            case 1:
-                String cName;
-                System.out.print("\nEnter Candidate Name: ");
-                cName = sc.next();
-                linkedCandidateList.addCandidate(cName);
         }
     }
 }

@@ -69,8 +69,11 @@ public class LinkedListCandidates implements CandidateLinkedListInterface {
             return;
         }
         Node current = head;
+        System.out.println("***************");
+        System.out.println("*Candidate List*");
+        System.out.println("***************");
         while (current != null) {
-            System.out.println(current.data.toString());
+            System.out.println("> " + current.data.toString());
             current = current.next;
         }
     }
