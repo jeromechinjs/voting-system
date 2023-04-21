@@ -111,7 +111,23 @@ public class Main {
                         }
                     }
                 } while (validate == 1);
-
+                break;
+            case 2:
+                String cand;
+                System.out.print("\nEnter Candidate Name: ");
+                cand = sc.next();
+                linkedCandidateList.removeCandidate(cand);
+                break;
+            case 3:
+                linkedCandidateList.displayCandidateList();
+                break;
+            case 4:
+                String aName, aPwd;
+                System.out.print("\nEnter admin userame: ");
+                aName = sc.next();
+                System.out.print("\nEnter password for account: ");
+                aPwd = sc.next();
+                linkedAdminList.addAdmin(aName, aPwd);
         }
     }
 }
