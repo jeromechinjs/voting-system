@@ -1,5 +1,6 @@
 package client;
 
+import java.util.Iterator;
 import adt.ArrayQueue;
 import adt.QueueInterface;
 import entity.VoteResultDataPair;
@@ -29,10 +30,21 @@ public class TestAddVotingResult {
 
 
         boolean cont = true;
+
+         // get iterator
+         Iterator<VoteResultDataPair> iterator = voteResults.iterator();
+        
+         while (iterator.hasNext()) { // traverse through each dataPair in voteResults arrayQueue
+             voteResults = iterator.next();
+             
+ 
+             }
+             
+         }
             
         
         do {
-             System.out.print("Enter student id: ");
+             
             String registerId = sc.nextLine();
         
         
@@ -70,31 +82,6 @@ public class TestAddVotingResult {
             System.out.print("Enter password: ");
             String password = sc.nextLine();
             
-            
-        // validation
-        
-        Iterator<Voter> iterator = voterList.getIterator();
-        
-        boolean loggedIn = false;
-        while (iterator.hasNext()) {
-            
-            Voter voter = iterator.next();
-            if (voter.getId().equals(id) && voter.getPassword().equals(password)) {
-                System.out.print("Login Successfully\n");
-                loggedIn = true;
-                System.out.print("ID: " + voter.getId() + "\nName: " + voter.getName() + "\nFaculty: " + voter.getFaculty()+ "\n");
-                conti = false;
-                break;
-
-            }
-            
-        }
-        if (!loggedIn) {
-                System.out.print("Student ID or Password is invalid\n");
-                conti = true;
-            }
-
-        }while(conti);
-        // login 
+      
     }
 }
