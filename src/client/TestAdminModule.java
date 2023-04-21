@@ -21,24 +21,43 @@ public class TestAdminModule {
         int result;
         while (true) {
             try {
-                System.out.print("Selection: ");
+                System.out.print("Selection (1/2/3): ");
                 selection = sc.next();
                 result = Integer.parseInt(selection);
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again.");
                 continue;
             }
+            if (result < 1 | result > 3) {
+                System.out.print("\nInvalid input! Please select the numbers available. ");
+            } else {
+                break;
+            }
         }
         switch (selection) {
-
+            case "1":
+                linkedAdminList.displayAdminList();
+                System.out.print("Enter a username to login as admin: ");
+                name = sc.next();
+                System.out.print("Enter the password: ");
+                pwd = sc.next();
+                linkedAdminList.login(name, pwd);
+                break;
+            case "2":
+                System.out.println("To be added");
+                break;
+            case "3":
+                System.out.println("Have a good day!");
+                break;
         }
-
-        System.out.print("Enter a username to register as admin: ");
-        name = sc.nextLine();
-        System.out.print("Enter a password to register as admin: ");
-        pwd = sc.nextLine();
-
-        linkedAdminList.addAdmin(name, pwd);
+        /*
+         * System.out.print("Enter a username to register as admin: ");
+         * name = sc.nextLine();
+         * System.out.print("Enter a password to register as admin: ");
+         * pwd = sc.nextLine();
+         * 
+         * linkedAdminList.addAdmin(name, pwd);
+         */
 
     }
 

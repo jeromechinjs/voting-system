@@ -1,6 +1,6 @@
 package adt;
 
-public interface CandidateList {
+public interface CandidateLinkedListInterface {
 
     void addCandidate(String newCandidate);
 
