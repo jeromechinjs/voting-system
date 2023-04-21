@@ -51,7 +51,7 @@ public class Main {
                     System.out.print("Enter the password: ");
                     pwd = sc.next();
                     // linkedAdminList.login("Broyan", "admin");
-                    if (true) {
+                    if (linkedAdminList.login(name, repeat)) {
                         System.out.println("You've logged in as: " + name);
                         System.out.println("*********************************************************");
                         System.out.println("Admin Menu ");

@@ -10,12 +10,14 @@ public class Results {
     private StackInterface<String> teachers = new ArrayStack<>();
     private StackInterface<Integer> voteCount = new ArrayStack<>();
 
+    public Results() {}
+
     public Results(StackInterface<String> teachers, StackInterface<Integer> voteCount) {
         this.teachers = teachers;
         this.voteCount = voteCount;
     }
 
-    public StackInterface<VoteResultDataPair> sortDescending(ArrayQueue<VoteResultDataPair> voteResults) {
+    public StackInterface<VoteResultDataPair> sortDescending(QueueInterface<VoteResultDataPair> voteResults) {
         StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
         StackInterface<String> tempStack2 = new ArrayStack<>();
 
@@ -44,7 +46,7 @@ public class Results {
         return sortedStack;       //Sorted Stack
     }
 
-    public void printResults(ArrayQueue<VoteResultDataPair> voteResults) {
+    public void printResults(QueueInterface<VoteResultDataPair> voteResults) {
         StackInterface<VoteResultDataPair> sortedStack = new ArrayStack<>();
         sortedStack = sortDescending(voteResults);
 
@@ -57,5 +59,5 @@ public class Results {
         System.out.printf("\n...And The Teacher of The Year is " + sortedStack.pop().getCandidateName() + "!!!!");
 
     }
-   
+
 }
