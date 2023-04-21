@@ -1,6 +1,4 @@
 package adt;
-
-import java.util.Comparator;
 /**
  *
  * @author Bryan Wong
@@ -11,10 +9,6 @@ public class ArrayStack<T> implements StackInterface<T> {
     private int topIndex, // index of top entry
                 numberOfEntries; 
     private static final int DEFAULT_CAPACITY = 50;
-    
-    public int getNumberOfEntries() {
-        return numberOfEntries;
-    }
 
     public ArrayStack() {
         this(DEFAULT_CAPACITY);
@@ -23,6 +17,10 @@ public class ArrayStack<T> implements StackInterface<T> {
     public ArrayStack(int initialCapacity) {
         arrayStack = (T[]) new Object[initialCapacity];
         topIndex = -1;
+    }
+
+    public int getNumberOfEntries() {
+        return numberOfEntries;
     }
 
     @Override
@@ -72,32 +70,6 @@ public class ArrayStack<T> implements StackInterface<T> {
         for (int i = 0; i < numberOfEntries; i++) {
             arrayStack [i] = oldArray[i];
         }
-    }
-
-    @Override
-    public StackInterface<Integer> sortAscending(StackInterface<Integer> aStack) {
-        StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
-
-        while (!aStack.isEmpty()) {         //Sort until aStack is empty
-            int temp = aStack.pop();        
-
-            while (!tempStack.isEmpty() && tempStack.peek() > temp) {   //if tempStack is not empty AND tempStack's top element is larger than aStack's top element,
-                aStack.push(tempStack.pop());                           //push tempStack's top element into aStack
-            }
-            tempStack.push(temp);
-        }
-        return tempStack;       //Sorted Stack
-    }
-
-    @Override
-    public StackInterface<Integer> sortDescending(StackInterface<Integer> aStack) {
-        StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
-
-        aStack = aStack.sortAscending(aStack);      //Sorts stack in ascending order
-        while (!aStack.isEmpty()) {
-            tempStack.push(aStack.pop());           //Reverse order
-        }
-        return tempStack;       //Sorted Stack
     }
 
     @Override
