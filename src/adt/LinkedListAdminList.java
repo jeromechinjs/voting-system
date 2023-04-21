@@ -90,7 +90,7 @@ public class LinkedListAdminList implements LinkedListInterface {
             System.out.println("***************");
             System.out.println("*List of Admin*");
             System.out.println("***************");
-            System.out.println(i + ".\t" + current.data.toString());
+            System.out.println(i + ".\t" + current.data.toString() + "\n");
             current = current.next;
             i++;
         }
