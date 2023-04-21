@@ -37,6 +37,7 @@ public class ArrayQueue<T> implements QueueInterface<T> {
     if (!isEmpty()) {
       front = array[frontIndex];
     }
+    
     return front;
   }
 
