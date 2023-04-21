@@ -55,20 +55,21 @@ public class Main {
                     System.out.println("\n*********************************************************");
                     System.out.println("*\t[1]\tAdd Candidate\t\t\t*");
                     System.out.println("*\t[2]\tRemove Candidate\t\t\t*");
-                    System.out.println("*\t[3]\tAdd Admin\t\t\t*");
-                    System.out.println("*\t[4]\tExit\t\t\t*");
+                    System.out.println("*\t[3]\tDisplay Candidate\t\t\t*");
+                    System.out.println("*\t[4]\tAdd Admin\t\t\t*");
+                    System.out.println("*\t[5]\tExit\t\t\t*");
                     System.out.println("\n*********************************************************\n\n");
                     int result;
                     while (true) {
                         try {
-                            System.out.print("Selection (1/2/3/4): ");
+                            System.out.print("Selection (1/2/3/4/5): ");
                             selection = sc.next();
                             result = Integer.parseInt(selection);
                         } catch (Exception e) {
                             System.out.println("Invalid input, please try again.");
                             continue;
                         }
-                        if (result < 1 | result > 4) {
+                        if (result < 1 | result > 5) {
                             System.out.print("\nInvalid input! Please select the numbers available. ");
                         } else {
                             break;
@@ -78,7 +79,7 @@ public class Main {
                 }
                 break;
             case "2":
-                System.out.println("Add Candidate: ");
+                System.out.println("To be added");
                 break;
             case "3":
                 System.out.println("Have a good day!");
@@ -87,10 +88,47 @@ public class Main {
 
         switch (temp) {
             case 1:
-                String cName;
+                String repeat, checkSelect;
+                int validate = 1;
+                do {
+                    String cName;
+                    System.out.print("\nEnter Candidate Name: ");
+                    cName = sc.next();
+                    linkedCandidateList.addCandidate(cName);
+                    System.out.println("Do you want to add more? 1 for yes 0 for no: ");
+                    while (true) {
+                        try {
+                            System.out.print("Selection (0/1): ");
+                            repeat = sc.next();
+                            validate = Integer.parseInt(repeat);
+                        } catch (Exception e) {
+                            System.out.println("Invalid input, please try again.");
+                            continue;
+                        }
+                        if (validate < 0 | validate > 1) {
+                            System.out.print("\nInvalid input! Please select the numbers available. ");
+                        } else {
+                            break;
+                        }
+                    }
+                } while (validate == 1);
+                break;
+            case 2:
+                String cand;
                 System.out.print("\nEnter Candidate Name: ");
-                cName = sc.next();
-                linkedCandidateList.addCandidate(cName);
+                cand = sc.next();
+                linkedCandidateList.removeCandidate(cand);
+                break;
+            case 3:
+                linkedCandidateList.displayCandidateList();
+                break;
+            case 4:
+                String aName, aPwd;
+                System.out.print("\nEnter admin userame: ");
+                aName = sc.next();
+                System.out.print("\nEnter password for account: ");
+                aPwd = sc.next();
+                linkedAdminList.addAdmin(aName, aPwd);
         }
     }
 }
