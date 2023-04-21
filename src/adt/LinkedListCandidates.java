@@ -1,20 +1,6 @@
 package adt;
 
-public class LinkedListCandidates implements CandidateList {
-
-    // Candidate class to hold candidate details
-    private static class Candidate {
-        String name;
-        String dptCode;
-        Candidate next;
-
-        // Constructor
-        public Candidate(String name, String dptCode) {
-            this.name = name;
-            this.dptCode = dptCode;
-            this.next = null;
-        }
-    }
+public class LinkedListCandidates implements CandidateLinkedListInterface {
 
     private Node head;
 

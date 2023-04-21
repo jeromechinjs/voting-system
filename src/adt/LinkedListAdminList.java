@@ -6,17 +6,6 @@ package adt;
 
 public class LinkedListAdminList implements LinkedListInterface {
 
-    // Admin class to hold admin account details
-    public static class Admin {
-        private String username;
-        private String password;
-
-        public Admin(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
-    }
-
     private Node head;
 
     private class Node {
@@ -80,19 +69,17 @@ public class LinkedListAdminList implements LinkedListInterface {
     }
 
     public void displayAdminList() {
+        System.out.println("***************");
+        System.out.println("*List of Admin*");
+        System.out.println("***************");
         if (head == null) {
             System.out.println("Admin list is empty");
             return;
         }
         Node current = head;
         while (current != null) {
-            int i = 1;
-            System.out.println("***************");
-            System.out.println("*List of Admin*");
-            System.out.println("***************");
-            System.out.println(i + ".\t" + current.data.toString() + "\n");
+            System.out.println("> " + ".\t" + current.data.toString() + "\n");
             current = current.next;
-            i++;
         }
     }
 
@@ -113,4 +100,19 @@ public class LinkedListAdminList implements LinkedListInterface {
             return false;
         }
     }
+
+    public boolean contains(String entry) {
+        boolean check = false;
+        Node tempNode = head;
+
+        while (!check && (tempNode != null)) {
+            if (entry.equals(tempNode.data)) {
+                check = true;
+            } else {
+                tempNode = tempNode.next;
+            }
+        }
+        return check;
+    }
+
 }
