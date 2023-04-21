@@ -4,7 +4,11 @@ package entity;
  *
  * @author yewchun
  */
+import adt.ArrayList;
+import adt.ListInterface;
+
 public class Voter {
+    private final ListInterface<Voter> voterList = new ArrayList<>();
     private String id;
      private String name;
      private String faculty;
@@ -17,8 +21,15 @@ public class Voter {
         this.password = password;
     }
 
+    public Voter() {
+    }
+
     public String getId() {
         return id;
+    }
+
+    public ListInterface<Voter> getVoterList() {
+        return voterList;
     }
 
     public void setId(String id) {
@@ -49,6 +60,13 @@ public class Voter {
         this.password = password;
     }
 
-   
+    public void addVoter(Voter voterInfo) {
+        voterList.add(voterInfo);
+    }
+    
+    public void displayArrayList() {
+        for (int i = 1; i <= voterList.getNumberOfEntries(); i++) {
+            System.out.print("ID: " + voterList.getEntry(i).getId() + "\nName: " + voterList.getEntry(i).getName() + "\nFaculty: " + voterList.getEntry(i).getFaculty());
+        }
+    }
 }
-
