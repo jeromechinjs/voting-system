@@ -24,7 +24,6 @@ public class TestStudentRegistrationAndLogin {
             System.out.print("Enter student id: ");
             String registerId = sc.nextLine();
         
-        
             System.out.print("\nEnter student name: ");
             String registerName = sc.nextLine();
         

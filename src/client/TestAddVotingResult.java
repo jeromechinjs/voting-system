@@ -12,14 +12,14 @@ public class TestAddVotingResult {
         
         Scanner sc = new Scanner(System.in); 
 
-        // temporary
-        voteResults.enqueue(new VoteResultDataPair("candidateA", 0));
+        // sample data
+        voteResults.enqueue(new VoteResultDataPair("candidateA", 2));
         voteResults.enqueue(new VoteResultDataPair("candidateB", 5));
-        voteResults.enqueue(new VoteResultDataPair("candidateC", 0));
-        voteResults.enqueue(new VoteResultDataPair("candidateE", 0));
-        voteResults.enqueue(new VoteResultDataPair("candidateF", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidateC", 1));
+        voteResults.enqueue(new VoteResultDataPair("candidateE", 20));
+        voteResults.enqueue(new VoteResultDataPair("candidateF", 30));
         voteResults.enqueue(new VoteResultDataPair("candidateG", 5));
-        voteResults.enqueue(new VoteResultDataPair("candidateH", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidateH", 110));
         voteResults.enqueue(new VoteResultDataPair("candidateI", 3));
         voteResults.enqueue(new VoteResultDataPair("candidateJ", 0));
 
