@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String args[]) {
         LinkedListAdminList linkedAdminList = new LinkedListAdminList();
+        LinkedListCandidates linkedCandidateList = new LinkedListCandidates();
         Scanner sc = new Scanner(System.in);
         linkedAdminList.addAdmin("Broyan", "admin");
         linkedAdminList.addAdmin("Danial", "moderator");
@@ -20,22 +21,23 @@ public class Main {
         System.out.println("*\t[2]\tStudent\t\t\t*");
         System.out.println("*\t[3]\tExit\t\t\t*");
         System.out.println("\n*********************************************************\n\n");
-        int result;
+        int select;
         while (true) {
             try {
                 System.out.print("Selection (1/2/3): ");
                 selection = sc.next();
-                result = Integer.parseInt(selection);
+                select = Integer.parseInt(selection);
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again.");
                 continue;
             }
-            if (result < 1 | result > 3) {
+            if (select < 1 | select > 3) {
                 System.out.print("\nInvalid input! Please select the numbers available. ");
             } else {
                 break;
             }
         }
+        int temp = 0;
         switch (selection) {
             case "1":
                 linkedAdminList.displayAdminList();
@@ -46,46 +48,48 @@ public class Main {
                 // linkedAdminList.login("Broyan", "admin");
                 if (true) {
                     System.out.println("You've logged in as: " + name);
+                    System.out.println("*********************************************************");
+                    System.out.println("Admin Menu ");
+                    System.out.println("*********************************************************");
+                    System.out.println("\n*********************************************************");
+                    System.out.println("*\t[1]\tAdd Candidate\t\t\t*");
+                    System.out.println("*\t[2]\tRemove Candidate\t\t\t*");
+                    System.out.println("*\t[3]\tAdd Admin\t\t\t*");
+                    System.out.println("*\t[4]\tExit\t\t\t*");
+                    System.out.println("\n*********************************************************\n\n");
+                    int result;
+                    while (true) {
+                        try {
+                            System.out.print("Selection (1/2/3/4): ");
+                            selection = sc.next();
+                            result = Integer.parseInt(selection);
+                        } catch (Exception e) {
+                            System.out.println("Invalid input, please try again.");
+                            continue;
+                        }
+                        if (result < 1 | result > 4) {
+                            System.out.print("\nInvalid input! Please select the numbers available. ");
+                        } else {
+                            break;
+                        }
+                        temp = result;
+                    }
                 }
-                adminMenu();
                 break;
             case "2":
-                System.out.println("To be added");
+                System.out.println("Add Candidate: ");
                 break;
             case "3":
                 System.out.println("Have a good day!");
                 break;
         }
-    }
 
-    public static void adminMenu() {
-        Scanner sc = new Scanner(System.in);
-        String selection;
-        System.out.println("*********************************************************");
-        System.out.println("Admin Menu ");
-        System.out.println("*********************************************************");
-        System.out.println("\n*********************************************************");
-        System.out.println("*\t[1]\tAdd Candidate\t\t\t*");
-        System.out.println("*\t[2]\tRemove Candidate\t\t\t*");
-        System.out.println("*\t[3]\tAdd Admin\t\t\t*");
-        System.out.println("*\t[4]\tExit\t\t\t*");
-        System.out.println("\n*********************************************************\n\n");
-        int result;
-        while (true) {
-            try {
-                System.out.print("Selection (1/2/3): ");
-                selection = sc.next();
-                result = Integer.parseInt(selection);
-            } catch (Exception e) {
-                System.out.println("Invalid input, please try again.");
-                continue;
-            }
-            if (result < 1 | result > 4) {
-                System.out.print("\nInvalid input! Please select the numbers available. ");
-            } else {
-                break;
-            }
+        switch (temp) {
+            case 1:
+                String cName;
+                System.out.print("\nEnter Candidate Name: ");
+                cName = sc.next();
+                linkedCandidateList.addCandidate(cName);
         }
-
     }
 }
