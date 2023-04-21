@@ -13,7 +13,7 @@ public class TestStudentRegistrationAndLogin {
     public static void main(String args[]) {
         
         Voter voter = new Voter();
-        ListInterface<Voter> voterList = new ArrayList<>();
+        // ListInterface<Voter> voterList = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in); 
         
