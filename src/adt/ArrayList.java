@@ -183,7 +183,7 @@ public class ArrayList<T> implements ListInterface<T> {
 
     private class ListIterator implements Iterator<T> {
         
-        private int currentIndex;       // by default is 1
+        private int currentIndex;       // by default is 0
         
         public ListIterator() {
             currentIndex = 0;
