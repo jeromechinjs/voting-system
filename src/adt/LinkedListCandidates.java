@@ -19,17 +19,17 @@ public class LinkedListCandidates implements CandidateList {
     private Node head;
 
     private class Node {
-        private CandidateList data;
+        private String data;
         private Node next;
 
-        public Node(CandidateList data) {
+        public Node(String data) {
             this.data = data;
             this.next = null;
         }
     }
 
     // Method to add a new candidate
-    public void addCandidate(CandidateList newCandidate) {
+    public void addCandidate(String newCandidate) {
         if (head == null) {
             head = new Node(newCandidate);
         } else {
@@ -50,7 +50,7 @@ public class LinkedListCandidates implements CandidateList {
     }
 
     // Method to remove a candidate from the list
-    public void removeCandidate(CandidateList candidateToRemove) {
+    public void removeCandidate(String candidateToRemove) {
         if (candidateToRemove == null) {
             System.out.println("Candidate cannot be null");
             return;

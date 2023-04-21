@@ -29,40 +29,40 @@ public class LinkedListAdminList implements AdminList {
     private Node head;
 
     private class Node {
-        private AdminList data;
+        private String data;
         private Node next;
 
-        public Node(AdminList data) {
+        public Node(String data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    public void addAdmin(AdminList newAdmin) {
-        if (newAdmin == null) {
+    public void addAdmin(String username, String password) {
+        if (username == null) {
             System.out.println("Admin cannot be null");
             return;
         }
         if (head == null) {
-            head = new Node(newAdmin);
+            head = new Node(username);
         } else {
             Node current = head;
             while (current.next != null) {
-                if (current.data.equals(newAdmin)) {
+                if (current.data.equals(username)) {
                     System.out.println("Admin already exists");
                     return;
                 }
                 current = current.next;
             }
-            if (current.data.equals(newAdmin)) {
+            if (current.data.equals(username)) {
                 System.out.println("Admin already exists");
                 return;
             }
-            current.next = new Node(newAdmin);
+            current.next = new Node(username);
         }
     }
 
-    public void removeAdmin(AdminList adminToRemove) {
+    public void removeAdmin(String adminToRemove) {
         if (adminToRemove == null) {
             System.out.println("Admin cannot be null");
             return;

@@ -1,9 +1,9 @@
 package adt;
 
 public interface AdminList {
-    void addAdmin(AdminList newAdmin);
+    void addAdmin(String newAdmin, String password);
 
-    void removeAdmin(AdminList adminToRemove);
+    void removeAdmin(String adminToRemove);
 
     void displayAdminList();
 }
