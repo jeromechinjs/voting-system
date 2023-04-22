@@ -9,42 +9,44 @@ public class Main {
     public static void main(String args[]) {
         LinkedListAdminList linkedAdminList = new LinkedListAdminList();
         LinkedListCandidates linkedCandidateList = new LinkedListCandidates();
+        Voter voter = new Voter();
         
         Scanner sc = new Scanner(System.in);
         linkedAdminList.addAdmin("Broyan", "admin");
         linkedAdminList.addAdmin("Danial", "moderator");
-        String name, pwd, selection;
-
-        System.out.println("*********************************************************");
-        System.out.println("Welcome to the Voting Kiosk. Please Select Your Login: ");
-        System.out.println("*********************************************************");
-        System.out.println("\n*********************************************************");
-        System.out.println("*\t[1]\tAdmin\t\t\t*");
-        System.out.println("*\t[2]\tStudent\t\t\t*");
-        System.out.println("*\t[3]\tExit\t\t\t*");
-        System.out.println("\n*********************************************************\n\n");
-        
-        int select;
+        String name, pwd;
+        int selection;
         String repeat = "y";
 
         while (repeat == "y") {
+                    System.out.println("*********************************************************");
+                    System.out.println("Welcome to the Voting Kiosk. Please Select Your Login: ");
+                    System.out.println("*********************************************************");
+                    System.out.println("\n*********************************************************");
+                    System.out.println("*\t[1]\tAdmin\t\t\t*");
+                    System.out.println("*\t[2]\tStudent\t\t\t*");
+                    System.out.println("*\t[3]\tExit\t\t\t*");
+                    System.out.println("\n*********************************************************\n\n");
+        
+                //int select;
+      
             while (true) {
                 try {
                     System.out.print("Selection (1/2/3): ");
-                    selection = sc.next();
-                    select = Integer.parseInt(selection);
+                    selection = sc.nextInt();
+                    ///select = Integer.parseInt(selection);
                 } catch (Exception e) {
                     System.out.println("Invalid input, please try again.");
                     continue;
                 }
-                if (select < 1 | select > 3) {
+                if (selection < 1 | selection > 3) {
                     System.out.print("\nInvalid input! Please select the numbers available. ");
                 } else {
                     break;
                 }
             }
             switch (selection) {
-                case "1":
+                case 1:
                     linkedAdminList.displayAdminList();
                     System.out.print("Enter a username to login as admin: ");
                     name = sc.next();
@@ -95,15 +97,94 @@ public class Main {
                         }
                     }
                     break;
-                case "2":
-                    System.out.println("To be added");
+
+                case 2:
+                    System.out.println("\nWelcome to Student Reistration and Login\n");
+                
+                    boolean cont = true;
+
+                    do {
+                        System.out.println("1. Student / Voter Registration");
+                        System.out.println("2. Student / Voter Login");
+                        System.out.print("Select your selection (1 / 2):");
+                        int opt = sc.nextInt();
+
+                        if (opt == 1) {
+
+                                System.out.println("\nStudent / Voter Registration Menu\n");
+                               
+                                System.out.print("Enter student id: ");
+                                String registerId = sc.next();
+                    
+                                System.out.print("\nEnter student name: ");
+                                String registerName = sc.next();
+                    
+                                System.out.print("\nEnter student faculty: ");
+                                String faculty = sc.next();
+                    
+                                System.out.print("\nEnter password: ");
+                                String registerPassword = sc.next();
+                    
+                                Voter voterInfo = new Voter(registerId, registerName, faculty, registerPassword);
+                        
+                                voter.addVoter(voterInfo);
+            
+                                
+                        
+                                System.out.print("Do you want to return registe or login? (y / n): ");
+                                String yes = sc.nextLine();
+                                cont = "y".equals(yes);
+                            }
+                            else if (opt == 2) {
+
+                                boolean conti = true;
+                                do {
+                                    System.out.println("\nStudent Login\n");
+                                    System.out.print("Enter student id: ");
+                                    String id = sc.next();
+                    
+                                    System.out.print("\nEnter password: ");
+                                    String password = sc.next();
+                                
+                                    // validation
+                            
+                                    Iterator<Voter> iterator = voter.getVoterList().getIterator();
+                            
+                                    boolean loggedIn = false;
+                                    while (iterator.hasNext()) {
+                                
+                                        Voter voterIt = iterator.next();
+                                        if (voterIt.getId().equals(id) && voterIt.getPassword().equals(password)) {
+                                            System.out.print("\nLogin Successfully\n");
+                                            loggedIn = true;
+                                            //System.out.print("ID: " + voterIt.getId() + "\nName: " + voterIt.getName() + "\nFaculty: " + voterIt.getFaculty()+ "\n");
+                                            conti = false;
+
+                                            // !! you guys can proceed here this part is occur when the student is successfully logged in. !!
+                                            break;
+                                        }
+                                    }
+                                    if (!loggedIn) {
+                                        System.out.print("\nStudent ID or Password is invalid\n");
+                                        conti = true;
+                                    }
+                    
+                                }while(conti);
+                    
+                            }
+
+                    } while (cont);
                     break;
-                case "3":
-                    System.out.println("Have a good day!");
-                    break;
-            }
-            System.out.println("Want to add more (y/n)? : ");
-            repeat = sc.next();
-        } 
-    }
+                           // System.out.println("Want to add more (y/n)? : ");
+                           // repeat = sc.next();
+
+                            //voter.displayArrayList();
+
+                case 3:
+                System.out.println("Have a good day!");
+                repeat = "n";
+                break;
+            }   
+        }
+    }                 
 }
