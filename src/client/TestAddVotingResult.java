@@ -25,10 +25,12 @@ public class TestAddVotingResult {
 
     //get iterator
     Iterator<VoteResultDataPair> iterator = voteResults.getIterator();
-    VoteResultDataPair a;
+    VoteResultDataPair currentCandidate;
     while (iterator.hasNext()) { // check if arrayQueue has any more elements - traverse through each dataPair in voteResults arrayQueue
-        iterator.next();
-        System.out.print(voteResults.getFront().getVoteCount());
+        currentCandidate = iterator.next();
+        System.out.println(currentCandidate.getCandidateName() + "");
+        System.out.println(currentCandidate.getVoteCount() + "");
+        
     }
 }
             

@@ -161,6 +161,7 @@ public class Main {
                                             conti = false;
 
                                             // !! you guys can proceed here this part is occur when the student is successfully logged in. !!
+                                            // Voting module will cont here (testing still under progress)
                                             break;
                                         }
                                     }
