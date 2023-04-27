@@ -73,6 +73,8 @@ public class ArrayQueue<T> implements QueueInterface<T> {
   public Iterator<T> getIterator() {
     return new ArrayQueueIterator();
   }
+
+  
   
   private class ArrayQueueIterator implements Iterator<T> {
     private int nextIndex;
@@ -96,5 +98,11 @@ public class ArrayQueue<T> implements QueueInterface<T> {
         return null;
       }
     }
+
+    @Override
+    public int hashCode() { // used already existing hashCode() method so that can override and use it (self created method unusable- not locally used warning)
+      return nextIndex; // return index number of each array queue element
+    }
+
   }
 }

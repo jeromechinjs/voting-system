@@ -9,14 +9,29 @@ public class Main {
     public static void main(String args[]) {
         LinkedListAdminList linkedAdminList = new LinkedListAdminList();
         LinkedListCandidates linkedCandidateList = new LinkedListCandidates();
+        QueueInterface<VoteResultDataPair> voteResults = new ArrayQueue<VoteResultDataPair>();
         Voter voter = new Voter();
         
         Scanner sc = new Scanner(System.in);
-        linkedAdminList.addAdmin("Broyan", "admin");
-        linkedAdminList.addAdmin("Danial", "moderator");
         String name, pwd;
         int selection;
         String repeat = "y";
+
+        linkedAdminList.addAdmin("Broyan", "admin");
+        linkedAdminList.addAdmin("Danial", "moderator");
+
+        // Test Data
+        // Enqueue All Registered Candidates into array queue
+        voteResults.enqueue(new VoteResultDataPair("candidate1", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate2", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate3", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate4", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate5", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate6", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate7", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate8", 0));
+        voteResults.enqueue(new VoteResultDataPair("candidate9", 0));
+
 
         while (repeat == "y") {
                     System.out.println("*********************************************************");
@@ -86,7 +101,7 @@ public class Main {
                                 break;
                             case 4:
                                 String aName, aPwd;
-                                System.out.print("\nEnter admin userame: ");
+                                System.out.print("\nEnter admin username: ");
                                 aName = sc.next();
                                 System.out.print("\nEnter password for account: ");
                                 aPwd = sc.next();
@@ -106,7 +121,7 @@ public class Main {
                     do {
                         System.out.println("1. Student / Voter Registration");
                         System.out.println("2. Student / Voter Login");
-                        System.out.print("Select your selection (1 / 2):");
+                        System.out.print("Select your selection (1 / 2): ");
                         int opt = sc.nextInt();
 
                         if (opt == 1) {
@@ -130,8 +145,8 @@ public class Main {
                                 voter.addVoter(voterInfo);
             
                                 
-                        
-                                System.out.print("Do you want to return registe or login? (y / n): ");
+        
+                                System.out.print("Do you want to return register or login? (y / n): ");
                                 String yes = sc.nextLine();
                                 cont = "y".equals(yes);
                             }
@@ -157,11 +172,58 @@ public class Main {
                                         if (voterIt.getId().equals(id) && voterIt.getPassword().equals(password)) {
                                             System.out.print("\nLogin Successfully\n");
                                             loggedIn = true;
-                                            //System.out.print("ID: " + voterIt.getId() + "\nName: " + voterIt.getName() + "\nFaculty: " + voterIt.getFaculty()+ "\n");
                                             conti = false;
 
-                                            // !! you guys can proceed here this part is occur when the student is successfully logged in. !!
-                                            // Voting module will cont here (testing still under progress)
+                                            /*
+                                            
+                                            ======= Voting Module =======
+
+                                            */
+                                            
+                                            // Vote for teacher of choice
+                                    
+                                            System.out.println("\n");
+                                            System.out.println("======================================\n");
+                                            System.out.println("Please Vote For Your Teacher of Choice\n");
+                                    
+                                    
+                                            // 1. Display list of teachers
+                                    
+                                            // Create Iterator (first iterate) - Iterate through arrayQueue to access each data pair (name-voteCount)
+                                            Iterator<VoteResultDataPair> nameIterator = voteResults.getIterator();
+                                            VoteResultDataPair currentCandidate; // current selected object (VoteResultDataPair) stored inside voteResult
+                                            
+                                            // traverse through each entry, get name
+                                            while (nameIterator.hasNext()) { // check if arrayQueue has any more elements - traverse through each dataPair in voteResults arrayQueue
+                                                currentCandidate = nameIterator.next(); // access each arrayQueue entry (each entry stored in arrayQueue is an object - VoteResultDataPair)
+                                                System.out.println(nameIterator.hashCode() + ". " + currentCandidate.getCandidateName());
+                                            }
+                                    
+                                            // 2. Get input vote
+                                            System.out.println("");
+                                            System.out.print("Enter The Teacher Number: ");
+                                            int inputSelectedCandidate = sc.nextInt(); // get index number input of name
+                                    
+                                            // 3. Update/Store Vote Count to corresponding teacher
+                                    
+                                            // Create Iterator (second iterate) - Iterate through arrayQueue to access each data pair (name-voteCount)
+                                            Iterator<VoteResultDataPair> voteIterator = voteResults.getIterator();
+                                            VoteResultDataPair selectedCandidate; // current selected object (VoteResultDataPair) stored inside voteResult
+                                    
+                                            // locate candidate by entry index in array queue, update vote count
+                                            while (voteIterator.hasNext()) { // check if arrayQueue has any more elements - traverse through each dataPair in voteResults arrayQueue
+                                                selectedCandidate = voteIterator.next(); // access each arrayQueue entry (each entry stored in arrayQueue is an object - VoteResultDataPair)
+                                                if (inputSelectedCandidate == voteIterator.hashCode()) { // if candidate entry found
+                                                    int currentVoteCount = selectedCandidate.getVoteCount();
+                                                    selectedCandidate.setVoteCount(currentVoteCount + 1); // update vote count
+                                                }
+                                            }           
+                                            
+                                            System.out.println("Thank you for your vote.");
+                                            System.out.println("\n");
+
+                                            cont = false; // return back to main menu
+
                                             break;
                                         }
                                     }
