@@ -50,6 +50,7 @@ public class ArrayStack<T> implements StackInterface<T> {
          if (topIndex < arrayStack.length) {
             arrayStack[topIndex] = newEntry;
         }
+        numberOfEntries++;
     }
 
     @Override
@@ -70,6 +71,32 @@ public class ArrayStack<T> implements StackInterface<T> {
         for (int i = 0; i < numberOfEntries; i++) {
             arrayStack [i] = oldArray[i];
         }
+    }
+
+    @Override
+    public StackInterface<Integer> sortAscending(StackInterface<Integer> aStack) {
+        StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
+
+        while (!aStack.isEmpty()) {         //Sort until aStack is empty
+            int temp = aStack.pop();        
+
+            while (!tempStack.isEmpty() && tempStack.peek() > temp) {   //if tempStack is not empty AND tempStack's top element is larger than aStack's top element,
+                aStack.push(tempStack.pop());                           //push tempStack's top element into aStack
+            }
+            tempStack.push(temp);
+        }
+        return tempStack;       //Sorted Stack
+    }
+
+    @Override
+    public StackInterface<Integer> sortDescending(StackInterface<Integer> aStack) {
+        StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
+
+        aStack = aStack.sortAscending(aStack);      //Sorts stack in ascending order
+        while (!aStack.isEmpty()) {
+            tempStack.push(aStack.pop());           //Reverse order
+        }
+        return tempStack;       //Sorted Stack
     }
 
     @Override

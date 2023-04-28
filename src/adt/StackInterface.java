@@ -12,4 +12,6 @@ public interface StackInterface<T> {
     public boolean isFull();
     public void expand();
     public void clear();
+    public StackInterface<Integer> sortAscending(StackInterface<Integer> aStack);
+    public StackInterface<Integer> sortDescending(StackInterface<Integer> aStack)
 }
