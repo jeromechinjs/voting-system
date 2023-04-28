@@ -90,11 +90,12 @@ public class LinkedListAdminList implements LinkedListInterface {
         } else {
             Node current = head;
             while (current != null) {
-                if (current.data.equals(username) && current.data.equals(password)) {
+                if (current.data == (username) && current.data == (password)) {
                     System.out.println("Login successful");
                     return true;
+                } else {
+                    current = current.next;
                 }
-                current = current.next;
             }
             System.out.println("Invalid username or password");
             return false;

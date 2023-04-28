@@ -1,4 +1,8 @@
 package adt;
+
+import entity.VoteResultDataPair;
+import entity.Voter;
+
 /**
  *
  * @author Bryan Wong
@@ -74,27 +78,38 @@ public class ArrayStack<T> implements StackInterface<T> {
     }
 
     @Override
-    public StackInterface<Integer> sortAscending(StackInterface<Integer> aStack) {
+    public StackInterface<VoteResultDataPair> sortAscending(StackInterface<Integer> intStack, StackInterface<String> strStack) {
         StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
+        StackInterface<String> tempStackStr = new ArrayStack<>();
+        StackInterface<VoteResultDataPair> sortedStack = new ArrayStack<>();
 
-        while (!aStack.isEmpty()) {         //Sort until aStack is empty
-            int temp = aStack.pop();        
+        while (!intStack.isEmpty()) {         //Sort until intStack is empty
+            int temp = intStack.pop();   
+            String strTemp = strStack.pop();     
 
-            while (!tempStack.isEmpty() && tempStack.peek() > temp) {   //if tempStack is not empty AND tempStack's top element is larger than aStack's top element,
-                aStack.push(tempStack.pop());                           //push tempStack's top element into aStack
+            while (!tempStack.isEmpty() && tempStack.peek() > temp) {   //if tempStack is not empty AND tempStack's top element is larger than intStack's top element,
+                intStack.push(tempStack.pop());
+                strStack.push(tempStackStr.pop());                           //push tempStack's top element into intStack
             }
             tempStack.push(temp);
+            tempStackStr.push(strTemp);
         }
-        return tempStack;       //Sorted Stack
+
+        while(!tempStack.isEmpty() && !tempStackStr.isEmpty()) {
+            VoteResultDataPair temp;
+            temp = new VoteResultDataPair(tempStackStr.pop(),tempStack.pop());
+            sortedStack.push(temp);
+        }
+        return sortedStack;       //Sorted Stack
     }
 
     @Override
-    public StackInterface<Integer> sortDescending(StackInterface<Integer> aStack) {
+    public StackInterface<VoteResultDataPair> sortDescending(StackInterface<Integer> intStack, StackInterface<String> strStack) {
         StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
 
-        aStack = aStack.sortAscending(aStack);      //Sorts stack in ascending order
-        while (!aStack.isEmpty()) {
-            tempStack.push(aStack.pop());           //Reverse order
+        intStack = intStack.sortAscending(intStack, strStack);      //Sorts stack in ascending order
+        while (!intStack.isEmpty()) {
+            tempStack.push(intStack.pop());           //Reverse order
         }
         return tempStack;       //Sorted Stack
     }

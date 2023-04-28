@@ -40,7 +40,8 @@ public class Main {
                     System.out.println("\n*********************************************************");
                     System.out.println("*\t[1]\tAdmin\t\t\t*");
                     System.out.println("*\t[2]\tStudent\t\t\t*");
-                    System.out.println("*\t[3]\tExit\t\t\t*");
+                    System.out.println("*\t[3]\tDisplay Results\t\t\t*");
+                    System.out.println("*\t[4]\tExit\t\t\t*");
                     System.out.println("\n*********************************************************\n\n");
         
                 //int select;
@@ -68,17 +69,17 @@ public class Main {
                     System.out.print("Enter the password: ");
                     pwd = sc.next();
                     // linkedAdminList.login("Broyan", "admin");
-                    if (linkedAdminList.login(name, repeat)) {
+                    if (true) {
                         System.out.println("You've logged in as: " + name);
                         System.out.println("*********************************************************");
                         System.out.println("Admin Menu ");
                         System.out.println("*********************************************************");
                         System.out.println("\n*********************************************************");
-                        System.out.println("*\t[1]\tAdd Candidate\t\t\t*");
+                        System.out.println("*\t[1]\tAdd Candidate\t\t\t\t*");
                         System.out.println("*\t[2]\tRemove Candidate\t\t\t*");
                         System.out.println("*\t[3]\tDisplay Candidate\t\t\t*");
-                        System.out.println("*\t[4]\tAdd Admin\t\t\t*");
-                        System.out.println("*\t[5]\tExit\t\t\t*");
+                        System.out.println("*\t[4]\tAdd Admin\t\t\t\t*");
+                        System.out.println("*\t[5]\tExit\t\t\t\t\t*");
                         System.out.println("\n*********************************************************\n\n");
                         int sel;
                         System.out.print("Choose 1 - 5: ");
@@ -242,8 +243,14 @@ public class Main {
                            // repeat = sc.next();
 
                             //voter.displayArrayList();
-
+                
                 case 3:
+                // Display updated vote count
+                   Results results = new Results();
+                   results.printResults(voteResults);
+                break;
+
+                case 4:
                 System.out.println("Have a good day!");
                 repeat = "n";
                 break;

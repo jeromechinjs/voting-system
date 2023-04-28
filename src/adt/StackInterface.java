@@ -1,4 +1,8 @@
 package adt;
+
+import entity.VoteResultDataPair;
+import entity.Voter;
+
 /**
  *
  * @author Bryan Wong
@@ -12,6 +16,6 @@ public interface StackInterface<T> {
     public boolean isFull();
     public void expand();
     public void clear();
-    public StackInterface<Integer> sortAscending(StackInterface<Integer> aStack);
-    public StackInterface<Integer> sortDescending(StackInterface<Integer> aStack)
+    public StackInterface<VoteResultDataPair> sortAscending(StackInterface<Integer> intStack, StackInterface<String> strStack);
+    public StackInterface<VoteResultDataPair> sortDescending(StackInterface<Integer> intStack, StackInterface<String> strStack);
 }
