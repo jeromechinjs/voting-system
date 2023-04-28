@@ -147,7 +147,7 @@ public class Main {
                                 
         
                                 System.out.print("Do you want to return register or login? (y / n): ");
-                                String yes = sc.nextLine();
+                                String yes = sc.next();
                                 cont = "y".equals(yes);
                             }
                             else if (opt == 2) {
