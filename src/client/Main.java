@@ -165,16 +165,21 @@ public class Main {
                                     // validation
                             
                                     Iterator<Voter> iterator = voter.getVoterList().getIterator();
-                            
+                                    Iterator<Voter> votediterator = voter.getVotedVoterList().getIterator();
+
                                     boolean loggedIn = false;
                                     while (iterator.hasNext()) {
                                 
                                         Voter voterIt = iterator.next();
-                                        if (voterIt.getId().equals(id) && voterIt.getPassword().equals(password)) {
+                                        Voter votedVoterIt = votediterator.next();
+                                        if (voterIt.getId().equals(id) && voterIt.getPassword().equals(password) && !votedVoterIt.getId().equals(voterIt.getId()) && !votedVoterIt.getPassword().equals(voterIt.getPassword())) {
                                             System.out.print("\nLogin Successfully\n");
                                             loggedIn = true;
+                                            Voter votedVoterInfo = new Voter(voterIt.getId(), voterIt.getName(), voterIt.getFaculty(), voterIt.getPassword());
+                                            voter.addVotedVoter(votedVoterInfo);
+                                            //System.out.print("ID: " + voterIt.getId() + "\nName: " + voterIt.getName() + "\nFaculty: " + voterIt.getFaculty()+ "\n");
                                             conti = false;
-
+                                            
                                             /*
                                             
                                             ======= Voting Module =======

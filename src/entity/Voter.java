@@ -9,6 +9,7 @@ import adt.ListInterface;
 
 public class Voter {
     private final ListInterface<Voter> voterList = new ArrayList<>();
+    private final ListInterface<Voter> votedVoterList = new ArrayList<>();
     private String id;
      private String name;
      private String faculty;
@@ -30,6 +31,10 @@ public class Voter {
 
     public ListInterface<Voter> getVoterList() {
         return voterList;
+    }
+
+    public ListInterface<Voter> getVotedVoterList() {
+        return votedVoterList;
     }
 
     public void setId(String id) {
@@ -62,6 +67,9 @@ public class Voter {
 
     public void addVoter(Voter voterInfo) {
         voterList.add(voterInfo);
+    }
+    public void addVotedVoter(Voter votedVoterInfo) {
+        voterList.add(votedVoterInfo);
     }
     
     public void displayArrayList() {
