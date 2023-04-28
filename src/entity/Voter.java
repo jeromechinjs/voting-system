@@ -69,7 +69,7 @@ public class Voter {
         voterList.add(voterInfo);
     }
     public void addVotedVoter(Voter votedVoterInfo) {
-        voterList.add(votedVoterInfo);
+        votedVoterList.add(votedVoterInfo);
     }
     
     public void displayArrayList() {
