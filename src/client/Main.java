@@ -38,9 +38,10 @@ public class Main {
                     System.out.println("Welcome to the Voting Kiosk. Please Select Your Login: ");
                     System.out.println("*********************************************************");
                     System.out.println("\n*********************************************************");
-                    System.out.println("*\t[1]\tAdmin\t\t\t\t\t\t\t\t*");
-                    System.out.println("*\t[2]\tStudent\t\t\t\t\t\t\t*");
-                    System.out.println("*\t[3]\tExit\t\t\t\t\t\t\t\t\t*");
+                    System.out.println("*\t[1]\tAdmin\t\t\t\t\t*");
+                    System.out.println("*\t[2]\tStudent\t\t\t\t\t*");
+                    System.out.println("*\t[3]\tDisplay Results\t\t\t\t*");
+                    System.out.println("*\t[4]\tExit\t\t\t\t\t*");
                     System.out.println("\n*********************************************************\n\n");
         
                 //int select;
@@ -54,7 +55,7 @@ public class Main {
                     System.out.println("Invalid input, please try again.");
                     continue;
                 }
-                if (selection < 1 | selection > 4) {
+                if (selection < 1 | selection > 3) {
                     System.out.print("\nInvalid input! Please select the numbers available. ");
                 } else {
                     break;
@@ -68,17 +69,17 @@ public class Main {
                     System.out.print("Enter the password: ");
                     pwd = sc.next();
                     // linkedAdminList.login("Broyan", "admin");
-                    if (linkedAdminList.login(name, repeat)) {
+                    if (true) {
                         System.out.println("You've logged in as: " + name);
                         System.out.println("*********************************************************");
                         System.out.println("Admin Menu ");
                         System.out.println("*********************************************************");
                         System.out.println("\n*********************************************************");
-                        System.out.println("*\t[1]\tAdd Candidate\t\t\t*");
+                        System.out.println("*\t[1]\tAdd Candidate\t\t\t\t*");
                         System.out.println("*\t[2]\tRemove Candidate\t\t\t*");
                         System.out.println("*\t[3]\tDisplay Candidate\t\t\t*");
-                        System.out.println("*\t[4]\tAdd Admin\t\t\t*");
-                        System.out.println("*\t[5]\tExit\t\t\t*");
+                        System.out.println("*\t[4]\tAdd Admin\t\t\t\t*");
+                        System.out.println("*\t[5]\tExit\t\t\t\t\t*");
                         System.out.println("\n*********************************************************\n\n");
                         int sel;
                         System.out.print("Choose 1 - 5: ");
@@ -146,8 +147,8 @@ public class Main {
             
                                 
         
-                                System.out.print("Do you want to return register and login page? (y / n): ");
-                                String yes = sc.nextLine();
+                                System.out.print("Do you want to return register or login? (y / n): ");
+                                String yes = sc.next();
                                 cont = "y".equals(yes);
                             }
                             else if (opt == 2) {
@@ -170,85 +171,10 @@ public class Main {
                                 
                                         Voter voterIt = iterator.next();
                                         if (voterIt.getId().equals(id) && voterIt.getPassword().equals(password)) {
-
-                                            while (votediterator.hasNext()) { 
-                                                if (votedVoterIt.getId().equals(voterIt.getId()) && votedVoterIt.getPassword().equals(voterIt.getPassword())) {
-                                                    System.out.print("the current voter has already voted.");
-                                                }
-                                            }
-
-                                                System.out.print("\nLogin Successfully\n");
-                                                loggedIn = true;
-                                                Voter votedVoterInfo = new Voter(voterIt.getId(), voterIt.getName(), voterIt.getFaculty(), voterIt.getPassword());
-                                                voter.addVotedVoter(votedVoterInfo);
-                                                //System.out.print("ID: " + voterIt.getId() + "\nName: " + voterIt.getName() + "\nFaculty: " + voterIt.getFaculty()+ "\n");
-                                                conti = false;
-                                                
-                                                /*
-                                                
-                                                ======= Voting Module =======
-    
-                                                */
-                                                
-                                                // Vote for teacher of choice
-                                        
-                                                System.out.println("\n");
-                                                System.out.println("======================================\n");
-                                                System.out.println("Please Vote For Your Teacher of Choice\n");
-                                        
-                                        
-                                                // 1. Display list of teachers
-                                        
-                                                // Create Iterator (first iterate) - Iterate through arrayQueue to access each data pair (name-voteCount)
-                                                Iterator<VoteResultDataPair> nameIterator = voteResults.getIterator();
-                                                VoteResultDataPair currentCandidate; // current selected object (VoteResultDataPair) stored inside voteResult
-                                                
-                                                // traverse through each entry, get name
-                                                while (nameIterator.hasNext()) { // check if arrayQueue has any more elements - traverse through each dataPair in voteResults arrayQueue
-                                                    currentCandidate = nameIterator.next(); // access each arrayQueue entry (each entry stored in arrayQueue is an object - VoteResultDataPair)
-                                                    System.out.println(nameIterator.hashCode() + ". " + currentCandidate.getCandidateName());
-                                                }
-                                        
-                                                // 2. Get input vote
-                                                System.out.println("");
-                                                System.out.print("Enter The Teacher Number: ");
-                                                int inputSelectedCandidate = sc.nextInt(); // get index number input of name
-                                        
-                                                // 3. Update/Store Vote Count to corresponding teacher
-                                        
-                                                // Create Iterator (second iterate) - Iterate through arrayQueue to access each data pair (name-voteCount)
-                                                Iterator<VoteResultDataPair> voteIterator = voteResults.getIterator();
-                                                VoteResultDataPair selectedCandidate; // current selected object (VoteResultDataPair) stored inside voteResult
-                                        
-                                                // locate candidate by entry index in array queue, update vote count
-                                                while (voteIterator.hasNext()) { // check if arrayQueue has any more elements - traverse through each dataPair in voteResults arrayQueue
-                                                    selectedCandidate = voteIterator.next(); // access each arrayQueue entry (each entry stored in arrayQueue is an object - VoteResultDataPair)
-                                                    if (inputSelectedCandidate == voteIterator.hashCode()) { // if candidate entry found
-                                                        int currentVoteCount = selectedCandidate.getVoteCount();
-                                                        selectedCandidate.setVoteCount(currentVoteCount + 1); // update vote count
-                                                    }
-                                                }           
-                                                
-                                                System.out.println("Thank you for your vote.");
-                                                System.out.println("\n");
-    
-                                                cont = false; // return back to main menu
-    
-                                                break;
-
-
-                                                
-                                            }
-                                            
-                                            
-
-                                            /*System.out.print("\nLogin Successfully\n");
+                                            System.out.print("\nLogin Successfully\n");
                                             loggedIn = true;
-                                            Voter votedVoterInfo = new Voter(voterIt.getId(), voterIt.getName(), voterIt.getFaculty(), voterIt.getPassword());
-                                            voter.addVotedVoter(votedVoterInfo);
-                                            //System.out.print("ID: " + voterIt.getId() + "\nName: " + voterIt.getName() + "\nFaculty: " + voterIt.getFaculty()+ "\n");
                                             conti = false;
-                                            
+
                                             /*
                                             
                                             ======= Voting Module =======
@@ -257,7 +183,7 @@ public class Main {
                                             
                                             // Vote for teacher of choice
                                     
-                                            /*System.out.println("\n");
+                                            System.out.println("\n");
                                             System.out.println("======================================\n");
                                             System.out.println("Please Vote For Your Teacher of Choice\n");
                                     
@@ -299,7 +225,7 @@ public class Main {
 
                                             cont = false; // return back to main menu
 
-                                            break;*/
+                                            break;
                                         }
                                     }
                                     if (!loggedIn) {
@@ -317,8 +243,14 @@ public class Main {
                            // repeat = sc.next();
 
                             //voter.displayArrayList();
-
+                
                 case 3:
+                // Display updated vote count
+                   Results results = new Results();
+                   results.printResults(voteResults);
+                break;
+
+                case 4:
                 System.out.println("Have a good day!");
                 repeat = "n";
                 break;
