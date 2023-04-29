@@ -34,6 +34,8 @@ public class Main {
 
 
         while (repeat == "y") {
+                    System.out.println("");
+                    System.out.println("");
                     System.out.println("*********************************************************");
                     System.out.println("Welcome to the Voting Kiosk. Please Select Your Login: ");
                     System.out.println("*********************************************************");
@@ -42,20 +44,20 @@ public class Main {
                     System.out.println("*\t[2]\tStudent\t\t\t\t\t*");
                     System.out.println("*\t[3]\tDisplay Results\t\t\t\t*");
                     System.out.println("*\t[4]\tExit\t\t\t\t\t*");
-                    System.out.println("\n*********************************************************\n\n");
+                    System.out.println("*********************************************************\n\n");
         
                 //int select;
       
             while (true) {
                 try {
-                    System.out.print("Selection (1/2/3): ");
+                    System.out.print("Selection (1/2/3/4): ");
                     selection = sc.nextInt();
                     ///select = Integer.parseInt(selection);
                 } catch (Exception e) {
                     System.out.println("Invalid input, please try again.");
                     continue;
                 }
-                if (selection < 1 | selection > 3) {
+                if (selection < 1 | selection > 4) {
                     System.out.print("\nInvalid input! Please select the numbers available. ");
                 } else {
                     break;
