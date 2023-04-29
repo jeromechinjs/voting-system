@@ -176,7 +176,7 @@ public class Main {
 
                                             while (votediterator.hasNext()) { 
                                                 if (votedVoterIt.getId().equals(voterIt.getId()) && votedVoterIt.getPassword().equals(voterIt.getPassword())) {
-                                                    System.out.print("this voter has already voted.");
+                                                    System.out.print("the current voter has already voted.");
                                                 }
                                             }
 
