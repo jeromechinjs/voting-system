@@ -103,16 +103,17 @@ public class ArrayStack<T> implements StackInterface<T> {
         return sortedStack;       //Sorted Stack
     }
 
-    // @Override
-    // public StackInterface<VoteResultDataPair> sortDescending(StackInterface<Integer> intStack, StackInterface<String> strStack) {
-    //     StackInterface<Integer> tempStack = new ArrayStack<>();      //temporary stack for sorting
+    @Override
+    public StackInterface<VoteResultDataPair> sortDescending(StackInterface<Integer> intStack, StackInterface<String> strStack) {
+        StackInterface<VoteResultDataPair> tempStack = new ArrayStack<>();      //temporary stack for sorting
+        StackInterface<VoteResultDataPair> sortedStack = new ArrayStack<>();
 
-    //     intStack = intStack.sortAscending(intStack, strStack);      //Sorts stack in ascending order
-    //     while (!intStack.isEmpty()) {
-    //         tempStack.push(intStack.pop());           //Reverse order
-    //     }
-    //     return tempStack;       //Sorted Stack
-    // }
+        sortedStack = sortedStack.sortAscending(intStack, strStack);      //Sorts stack in ascending order
+        while (!sortedStack.isEmpty()) {
+            tempStack.push(sortedStack.pop());           //Reverse order
+        }
+        return tempStack;       //Sorted Stack
+    }
 
     @Override
     public void clear() {

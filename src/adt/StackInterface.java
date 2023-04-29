@@ -17,5 +17,5 @@ public interface StackInterface<T> {
     public void expand();
     public void clear();
     public StackInterface<VoteResultDataPair> sortAscending(StackInterface<Integer> intStack, StackInterface<String> strStack);
-    // public StackInterface<VoteResultDataPair> sortDescending(StackInterface<Integer> intStack, StackInterface<String> strStack);
+    public StackInterface<VoteResultDataPair> sortDescending(StackInterface<Integer> intStack, StackInterface<String> strStack);
 }
