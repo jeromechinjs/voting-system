@@ -26,7 +26,7 @@ public class Results {
             voteStack.push(result.getVoteCount());
         }
         
-        sortedStack = sortedStack.sortAscending(voteStack, nameStack);
+        sortedStack = sortedStack.sortDescending(voteStack, nameStack);
         voteStack.clear();
         nameStack.clear();
 
